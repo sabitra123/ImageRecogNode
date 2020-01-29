@@ -1,7 +1,6 @@
 {
   "name": "ImgRecogNode",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "dependencies": {
     "express": "^4.17.1",
@@ -16,5 +15,14 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sabitra123/ImageRecogNode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sabitra123/ImageRecogNode/issues"
+  },
+  "homepage": "https://github.com/sabitra123/ImageRecogNode#readme",
+  "description": ""
 }
