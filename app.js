@@ -62,7 +62,8 @@ app.post('/upload',(req,res) => {
             if (err) { 
               console.log(err);
             } else {
-              //res.setHeader("Access-Control-Allow-Origin","*");
+              res.setHeader("Access-Control-Allow-Origin","*");
+              res.setHeader("Access-Control-Allow-Origin","https://pseudonerdsnodejs-pseudo-nerds.gamification-d3c0cb24e2b77f6869027abe3de4bca3-0001.sng01.containers.appdomain.cloud");
               //res.setHeader("Access-Control-Allow-Methods","POST, GET, OPTIONS");
               //res.send(JSON.stringify(response.result, null, 2));
               res.redirect('www.google.com');
