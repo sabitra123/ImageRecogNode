@@ -62,9 +62,10 @@ app.post('/upload',(req,res) => {
             if (err) { 
               console.log(err);
             } else {
-              res.setHeader("Access-Control-Allow-Origin","*");
-              res.setHeader("Access-Control-Allow-Methods","POST, GET, OPTIONS");
-              res.send(JSON.stringify(response.result, null, 2));
+              //res.setHeader("Access-Control-Allow-Origin","*");
+              //res.setHeader("Access-Control-Allow-Methods","POST, GET, OPTIONS");
+              //res.send(JSON.stringify(response.result, null, 2));
+              res.redirect('www.google.com');
             } 
           });
 
