@@ -11,7 +11,7 @@ var fs = require('fs');
 const form =  new formidable.IncomingForm();
 
 app.post('/upload',(req,res) =>{
-    res.send("hello world");
+    //res.send("hello world");
     const visualRecognition = new VisualRecognitionV3({
         version: '2018-03-19',
         authenticator: new IamAuthenticator({ apikey: 'KvnVxXCjN81frRj5c3iJuCf1-nEyHPD6WVoy3deqEWqM' }),
@@ -23,11 +23,11 @@ app.post('/upload',(req,res) =>{
       visualRecognition.classify(params)
         .then(response => {
             console.log(JSON.stringify(response.result, null, 2));
-            response.setHeader("Access-Control-Allow-Origin","*");
-            response.setHeader("Access-Control-Allow-Origin","https://pseudonerdsnodejs-pseudo-nerds.gamification-d3c0cb24e2b77f6869027abe3de4bca3-0001.sng01.containers.appdomain.cloud");
+            res.setHeader("Access-Control-Allow-Origin","*");
+            res.setHeader("Access-Control-Allow-Origin","https://pseudonerdsnodejs-pseudo-nerds.gamification-d3c0cb24e2b77f6869027abe3de4bca3-0001.sng01.containers.appdomain.cloud");
               //res.setHeader("Access-Control-Allow-Methods","POST, GET, OPTIONS");
-              //res.send(JSON.stringify(response.result, null, 2));
-            response.redirect('www.google.com');
+            res.send(JSON.stringify(response.result, null, 2));
+            //response.redirect('www.google.com');
         })
         .catch(err => {
           console.log(err);
