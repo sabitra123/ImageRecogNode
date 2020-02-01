@@ -47,6 +47,11 @@ app.get('/',(req,res) =>{
 
 app.post('/upload',(req,res) => {
     form.parse(req, (err, fields, files) => {
+
+        console.log("Parsing done.");
+        console.dir(req.headers);
+        console.log(fields);
+        console.log(files);
         var oldpath = files.upload.path;
         var images_file= fs.createReadStream(oldpath);
         var classifier_ids = ["DefaultCustomModel_742055041"];
