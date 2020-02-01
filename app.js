@@ -10,7 +10,7 @@ const { IamAuthenticator } = require('ibm-watson/auth');
 var fs = require('fs');
 const form =  new formidable.IncomingForm();
 
-app.post('/upload',(req,res) =>{
+app.get('/upload',(req,res) =>{
     //res.send("hello world");
     const visualRecognition = new VisualRecognitionV3({
         version: '2018-03-19',
@@ -45,7 +45,7 @@ app.get('/',(req,res) =>{
   `);
 });
 
-app.get('/upload',(req,res) => {
+app.post('/upload',(req,res) => {
     res.setHeader("Access-Control-Allow-Origin","*");
     form.parse(req, (err, fields, files) => {
         var oldpath = files.upload.path;
