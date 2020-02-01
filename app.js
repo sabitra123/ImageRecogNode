@@ -10,7 +10,7 @@ const { IamAuthenticator } = require('ibm-watson/auth');
 var fs = require('fs');
 const form =  new formidable.IncomingForm();
 
-app.get('/upload',(req,res) =>{
+app.post('/upload',(req,res) =>{
     res.send("hello world");
     const visualRecognition = new VisualRecognitionV3({
         version: '2018-03-19',
@@ -23,6 +23,11 @@ app.get('/upload',(req,res) =>{
       visualRecognition.classify(params)
         .then(response => {
             console.log(JSON.stringify(response.result, null, 2));
+            response.setHeader("Access-Control-Allow-Origin","*");
+            response.setHeader("Access-Control-Allow-Origin","https://pseudonerdsnodejs-pseudo-nerds.gamification-d3c0cb24e2b77f6869027abe3de4bca3-0001.sng01.containers.appdomain.cloud");
+              //res.setHeader("Access-Control-Allow-Methods","POST, GET, OPTIONS");
+              //res.send(JSON.stringify(response.result, null, 2));
+            response.redirect('www.google.com');
         })
         .catch(err => {
           console.log(err);
@@ -40,7 +45,7 @@ app.get('/',(req,res) =>{
   `);
 });
 
-app.post('/upload',(req,res) => {
+app.get('/upload',(req,res) => {
     res.setHeader("Access-Control-Allow-Origin","*");
     form.parse(req, (err, fields, files) => {
         var oldpath = files.upload.path;
