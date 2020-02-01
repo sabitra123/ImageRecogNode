@@ -46,7 +46,6 @@ app.get('/',(req,res) =>{
 });
 
 app.post('/upload',(req,res) => {
-    res.setHeader("Access-Control-Allow-Origin","*");
     form.parse(req, (err, fields, files) => {
         var oldpath = files.upload.path;
         var images_file= fs.createReadStream(oldpath);
@@ -63,18 +62,20 @@ app.post('/upload',(req,res) => {
             version: '2018-03-19',
             authenticator: new IamAuthenticator({ apikey: 'KvnVxXCjN81frRj5c3iJuCf1-nEyHPD6WVoy3deqEWqM' }),
           });
-          
-        visualRecognition.classify(params, function(err, response) {
-            if (err) { 
-              console.log(err);
-            } else {
-              res.setHeader("Access-Control-Allow-Origin","*");
-              res.setHeader("Access-Control-Allow-Origin","https://pseudonerdsnodejs-pseudo-nerds.gamification-d3c0cb24e2b77f6869027abe3de4bca3-0001.sng01.containers.appdomain.cloud");
-              //res.setHeader("Access-Control-Allow-Methods","POST, GET, OPTIONS");
-              res.send(JSON.stringify(response.result, null, 2));
-              //res.redirect('www.google.com');
-            } 
-          });
+
+          visualRecognition.classify(params)
+          .then(response => {
+                    console.log(JSON.stringify(response.result, null, 2));
+                    res.setHeader("Access-Control-Allow-Origin","*");
+                    res.setHeader("Access-Control-Allow-Origin","https://pseudonerdsnodejs-pseudo-nerds.gamification-d3c0cb24e2b77f6869027abe3de4bca3-0001.sng01.containers.appdomain.cloud");
+                      //res.setHeader("Access-Control-Allow-Methods","POST, GET, OPTIONS");
+                    res.send(JSON.stringify(response.result, null, 2));
+                    //response.redirect('www.google.com');
+                })
+                .catch(err => {
+                  console.log(err);
+                });
+                  
 
       });
   });
