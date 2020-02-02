@@ -48,7 +48,7 @@ app.get('/',(req,res) =>{
 app.post('/upload',(req,res) => {
     form.parse(req, (err, fields, files) => {
 
-        console.log("Parsing done.");
+        console.log("Parsing done 2.");
         console.dir(req.headers);
         console.log(fields);
         console.log(files);
